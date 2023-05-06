@@ -1,30 +1,32 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: DELETE");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
- 
+
 include_once '../config/ConnectDatabase.php';
 include_once '../class/Items.php';
- 
+
 $database = new Connect_Database();
+$database->setDBName("Scandiweb");
 $db = $database->getConnection();
- 
+
 $items = new Items($db);
- 
+$items->setTableName("Products");
+
 $data = json_decode(file_get_contents("php://input"));
 
-if(!empty($data->id)) {
+if (!empty($data->id)) {
 	$items->ID = $data->id;
-	if($items->delete()){    
-		http_response_code(200); 
+	if ($items->delete()) {
+		http_response_code(200);
 		echo json_encode(array("message" => "Item was deleted."));
-	} else {    
-		http_response_code(503);   
+	} else {
+		http_response_code(503);
 		echo json_encode(array("message" => "Unable to delete item."));
 	}
 } else {
-	http_response_code(400);    
-    echo json_encode(array("message" => "Unable to delete items. Data is incomplete."));
+	http_response_code(400);
+	echo json_encode(array("message" => "Unable to delete items. Data is incomplete."));
 }

@@ -2,7 +2,7 @@
 
 class Items
 {
-    private $TABLE_NAME = "menu";
+    private $TABLE_NAME;
     private $CONN;
     public $ID;
     public $NAMES;
@@ -14,6 +14,11 @@ class Items
     public function __construct($db)
     {
         $this->CONN = $db;
+    }
+
+    public function setTableName($tableName)
+    {
+        $this->TABLE_NAME = $tableName;
     }
 
     function create()

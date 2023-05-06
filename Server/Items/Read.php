@@ -6,9 +6,11 @@ include_once '../config/ConnectDatabase.php';
 include_once '../class/Items.php';
 
 $database = new Connect_Database();
+$database->setDBName("Scandiweb");
 $db = $database->getConnection();
 
 $items = new Items($db);
+$items->setTableName("Products");
 
 $items->ID = (isset($_GET['id']) && $_GET['id']) ? $_GET['id'] : '0';
 echo $items->ID;

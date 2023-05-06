@@ -9,9 +9,11 @@ include_once '../Config/ConnectDatabase.php';
 include_once '../Class/Items.php';
 
 $database = new Connect_Database();
+$database->setDBName("Scandiweb");
 $db = $database->getConnection();
 
 $items = new Items($db);
+$items->setTableName("Products");
 
 $data = json_decode(file_get_contents("php://input"));
 
