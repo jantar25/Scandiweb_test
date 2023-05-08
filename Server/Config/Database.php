@@ -70,7 +70,7 @@ class Database
 }
 
 $DB = new Database();
-$DB->setDBAndTableName("Scandiweb", "Products");
+$DB->setDBAndTableName("PetitPlatResto", "Products");
 echo $DB->getDBAndTableName();
 $DB->createDB();
 $DB->createTable();

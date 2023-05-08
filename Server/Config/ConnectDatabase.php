@@ -2,24 +2,42 @@
 
 class Connect_Database
 {
-    private $SERVERNAME = "localhost";
-    private $USERNAME = "root";
-    private $PASSWORD = "";
-    private $DB_NAME;
+    private const SERVERNAME = "localhost";
+    private const USERNAME = "root";
+    private const PASSWORD = "";
+    private const DB_NAME = "PetitPlatResto";
 
-    public function setDBName($dbName)
+    // Data Source Network
+    private $DSN = 'mysql:host=' . self::SERVERNAME . ';dbname=' . self::DB_NAME . '';
+
+    // conn variable
+    protected $CONN = null;
+
+    // Constructor Function
+    public function __construct()
     {
-        $this->DB_NAME = $dbName;
+        try {
+            $this->CONN = new PDO($this->DSN, self::USERNAME, self::PASSWORD);
+            $this->CONN->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die('Connectionn Failed : ' . $e->getMessage());
+        }
+        return $this->CONN;
     }
 
-    //connection to Database
-    public function getConnection()
+    // Sanitize Inputs
+    public function test_input($data)
     {
-        $CONN = new mysqli($this->SERVERNAME, $this->USERNAME, $this->PASSWORD, $this->DB_NAME);
-        // Check connection
-        if ($CONN->connect_error) {
-            die("Connection failed: " . $CONN->connect_error);
-        }
-        return $CONN;
+        $data = strip_tags($data);
+        $data = htmlspecialchars($data);
+        $data = stripslashes($data);
+        $data = trim($data);
+        return $data;
+    }
+
+    // JSON Format Converter Function
+    public function message($content, $status)
+    {
+        return json_encode(['message' => $content, 'error' => $status]);
     }
 }

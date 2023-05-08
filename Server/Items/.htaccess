@@ -1,6 +1,5 @@
-RewriteEngine On    # Turn on the rewriting engine
-RewriteRule ^read$ Read.php [NC,L]
-RewriteRule ^read/([0-9_-]*)$ read.php?id=$1 [NC,L]
-RewriteRule ^create$ Create.php [NC,L]
-RewriteRule ^update$ Update.php [NC,L]
-RewriteRule ^delete$ Delete.php [NC,L]
+RewriteEngine On #Turn Rewrite Engine On
+
+RewriteRule ^products/?$ products.php [NC,L] #Remove .php extension form users.php
+
+RewriteRule ^products/([0-9]+)/?$ products.php?id=$1 [NC,L] #Rewrite URL
