@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import products from '../../Constants/products'
+import Product from '../../Components/Product/Product'
 import './productlist.css'
 
 const ProductList = () => {
@@ -17,7 +19,8 @@ const ProductList = () => {
         </div>
         <hr />
         <div className='body'>
-            Product list here
+            {products.map(product =>
+            <Product key={product.id} product={product} />)}
         </div>
     </div>
   )

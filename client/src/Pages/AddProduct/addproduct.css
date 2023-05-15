@@ -1,15 +1,13 @@
 .addProduct-container .header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 .header h2 {
     margin: 0;
 }
 
-.header .button-container button {
-    margin: 0 .5rem;
+.button-container .save,.cancel {
     color: #fff;
     font-weight: 600;
     padding: .5rem 1rem;
@@ -20,6 +18,7 @@
 
 .button-container .save {
     background: #5cb85c;
+    margin-right: 1rem;
 }
 
 .button-container .save:hover {
@@ -36,4 +35,15 @@
 
 .addProduct-container .body {
     min-height: 75vh;
+}
+
+@media only screen and (min-width: 640px) {
+    .addProduct-container .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header .button-container {
+        margin: 0;
+    }
 }

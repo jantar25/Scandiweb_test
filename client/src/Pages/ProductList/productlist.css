@@ -1,15 +1,17 @@
 .productlist-container .header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 .header h2 {
     margin: 0;
 }
 
-.header .button-container button {
-    margin: 0 .5rem;
+.header .button-container {
+    margin: .5rem 0;
+}
+
+.button-container .add,.mass-delete {
     color: #fff;
     font-weight: 600;
     padding: .5rem 1rem;
@@ -20,6 +22,7 @@
 
 .button-container .add {
     background: #0275d8;
+    margin-right: 1rem;
 }
 
 .button-container .add:hover {
@@ -36,4 +39,34 @@
 
 .productlist-container .body {
     min-height: 75vh;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 1rem;
+}
+
+@media only screen and (min-width: 640px) {
+    .productlist-container .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header .button-container {
+        margin: 0;
+    }
+    .productlist-container .body {
+        grid-template-columns: repeat(2, 1fr);
+    }  
+}
+
+@media only screen and (min-width: 768px) {
+    .productlist-container .body {
+        grid-template-columns: repeat(3, 1fr);
+    } 
+}
+
+@media only screen and (min-width: 1024px) {
+    .productlist-container .body {
+        grid-template-columns: repeat(4, 1fr);
+    } 
 }
