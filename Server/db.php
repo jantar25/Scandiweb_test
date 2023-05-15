@@ -1,6 +1,6 @@
 <?php
 // Include config.php file
-include_once '../Config/ConnectDatabase.php';
+include_once './Config/ConnectDatabase.php';
 
 // Create a class Products
 class Database extends Connect_Database

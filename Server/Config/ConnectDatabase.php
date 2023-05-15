@@ -2,6 +2,10 @@
 
 class Connect_Database
 {
+    // private const SERVERNAME = "sql306.epizy.com";
+    // private const USERNAME = "epiz_34170761";
+    // private const PASSWORD = "NFgkgqGhEcu";
+    // private const DB_NAME = "epiz_34170761_PetitPlatResto";
     private const SERVERNAME = "localhost";
     private const USERNAME = "root";
     private const PASSWORD = "";
