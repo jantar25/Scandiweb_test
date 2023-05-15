@@ -1,0 +1,39 @@
+.addProduct-container .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.header .button-container button {
+    margin: 0 .5rem;
+    color: #fff;
+    font-weight: 600;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-container .save {
+    background: #5cb85c;
+}
+
+.button-container .save:hover {
+    background: #7ddb7d;
+}
+
+.button-container .cancel {
+    background: #292b2c;
+}
+
+.button-container .cancel:hover {
+    background: #000000;
+}
+
+.addProduct-container .body {
+    min-height: 75vh;
+}

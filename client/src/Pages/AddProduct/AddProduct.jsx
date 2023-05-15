@@ -1,17 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import './addproduct.css'
 
 const AddProduct = () => {
   return (
-    <div>
-        <div>
-            <h1>Product Add</h1>
-            <div>
-                <button>Save</button>
-                <button>Cancel</button>
+    <div className='addProduct-container'>
+        <div className='header'>
+            <h2>Product Add</h2>
+            <div className='button-container'>
+                <button className='save'>Save</button>
+                <Link to='/' style={{textDecoration:'none'}}>
+                  <button className='cancel'>Cancel</button>
+                </Link>
             </div>
         </div>
         <hr />
-        <div>
+        <div className='body'>
             product add here
         </div>
     </div>
