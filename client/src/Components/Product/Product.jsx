@@ -5,7 +5,7 @@ import './product.css'
 const Product = ({product}) => {
   return (
     <div className='product-container'>
-        <input type='checkbox' className='.delete-checkbox'/>
+        <input type='checkbox' className='.delete-checkbox' />
         <div className='product-card'>
             <span>{product.SKU}</span>
             <span>{product.name}</span>
