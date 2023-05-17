@@ -19,9 +19,21 @@ const AddProduct = () => {
     length: '',
   })
 
-  const handleChange = (e) => {
+  const handleTextChange = (e) => {
     setInputs({...inputs,[e.target.id]:e.target.value})
   }
+
+  const handleNumberChange = (e) => {
+    const regex = /^\d+(\.\d{1,2})?$/;
+    if (e.target.value === "" || regex.test(e.target.value)) {
+      setInputs({...inputs,[e.target.id]:e.target.value})
+    } else {
+      setNotification('“Please, provide the data of indicated type”')
+      setTimeout(() => {
+        setNotification(null)
+      }, 5000)
+    }
+  };
 
   const emptyForm = () => {
     setInputs({
@@ -94,7 +106,7 @@ const AddProduct = () => {
   return (
     <div className='addProduct-container'>
         <div className='header'>
-            <h2>Product Add</h2>
+            <h1>Product Add</h1>
             <div className='button-container'>
                 <button className='save' onClick={handleSubmit}>Save</button>
                 <Link to='/' style={{textDecoration:'none'}}>
@@ -106,7 +118,8 @@ const AddProduct = () => {
         <ProductForm
           notification={notification}
           inputs={inputs}
-          handleChange={handleChange}
+          handleTextChange={handleTextChange}
+          handleNumberChange={handleNumberChange}
         />
     </div>
   )

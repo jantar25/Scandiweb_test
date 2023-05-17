@@ -9,7 +9,7 @@ const ProductList = () => {
   return (
     <div className='productlist-container'>
         <div className='header'>
-            <h2>Product List</h2>
+            <h1>Product List</h1>
             <div className='button-container'>
                 <Link to='/addproduct' style={{textDecoration:'none'}}>
                     <button className='add'>ADD</button>
