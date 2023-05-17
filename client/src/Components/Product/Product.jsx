@@ -2,10 +2,14 @@ import React from 'react'
 
 import './product.css'
 
-const Product = ({product}) => {
+const Product = ({product,handleCheckBox}) => {
   return (
     <div className='product-container'>
-        <input type='checkbox' className='.delete-checkbox' />
+        <input 
+          type='checkbox' 
+          className='.delete-checkbox' 
+          value={product.SKU} 
+          onChange={handleCheckBox}/>
         <div className='product-card'>
             <span>{product.SKU}</span>
             <span>{product.name}</span>
