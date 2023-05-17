@@ -100,7 +100,7 @@ const AddProduct = () => {
               setNotification(null)
             }, 5000)
           } else {
-            const product = { ...common,dimension:`${height}x${width}x${length}` }
+            const product = { ...common,dimensions:`${height}x${width}x${length}` }
             createProduct(product)
           }
           break;

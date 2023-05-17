@@ -19,7 +19,6 @@ $id = intval($_GET['id'] ?? '');
 
 // get body data from request
 $data = json_decode(file_get_contents("php://input"));
-
 // Get all or a single Product from database
 if ($api == 'GET') {
     if ($id != 0) {
@@ -47,33 +46,21 @@ if ($api == 'POST') {
     }
 }
 
-// Update products in database
-if ($api == 'PUT') {
-    $names = $product->test_input($data->name);
-    $imageURL = $product->test_input($data->imageURL);
-    $descriptions = $product->test_input($data->description);
-    $amount = $product->test_input($data->price);
 
-    if ($id != null) {
-        if ($product->update($names, $imageURL, $amount, $descriptions, $id)) {
-            echo $product->message('Product updated successfully!', false);
-        } else {
-            echo $product->message('Failed to update an product!', true);
-        }
-    } else {
-        echo $product->message('Product not found!', true);
-    }
-}
+// Mass delete products from database
+if ($api == 'PATCH') {
+    $checkboxes = $data;
+    for ($i = 0; $i < sizeof($checkboxes); $i++) {
+        $skuToDelete = $checkboxes[$i];
 
-// Delete products from database
-if ($api == 'DELETE') {
-    if ($id != null) {
-        if ($product->delete($id)) {
-            echo $product->message('Product deleted successfully!', false);
+        if ($skuToDelete != null) {
+            if ($product->delete($skuToDelete)) {
+                echo $product->message('Product deleted successfully!', false);
+            } else {
+                echo $product->message('Failed to delete an product!', true);
+            }
         } else {
-            echo $product->message('Failed to delete an product!', true);
+            echo $product->message('Product not found!', true);
         }
-    } else {
-        echo $product->message('Product not found!', true);
     }
 }

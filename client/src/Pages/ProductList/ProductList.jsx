@@ -31,13 +31,18 @@ const ProductList = () => {
         }
     }
 
-    const handleMassDelete = () => {
-        console.log(checkedProducts)
+    const handleMassDelete = async () => {
+        try {
+            await axios.patch(baseURL,checkedProducts)
+            setProducts(products.filter(product => !checkedProducts.includes(product.SKU)))
+        } catch (error) {
+           console.log(error) 
+        }
     }
 
-    if (!products) return null;
+    if (!products) return null
 
-    console.log(products)
+    const sortedProduct = products.sort((a,b)=> b.id-a.id)
 
   return (
     <div className='productlist-container'>
@@ -55,7 +60,7 @@ const ProductList = () => {
         </div>
         <hr />
         <div className='body'>
-            {products.map(product =>
+            {sortedProduct.map(product =>
             <Product
                 key={product.id} 
                 product={product} 

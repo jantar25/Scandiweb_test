@@ -42,11 +42,11 @@ class Database extends Connect_Database
     }
 
     // Delete an Product from database
-    public function delete($id)
+    public function delete($skuToDelete)
     {
-        $sql = 'DELETE FROM Products WHERE id = :id';
+        $sql = 'DELETE FROM Products WHERE SKU = :sku';
         $stmt = $this->CONN->prepare($sql);
-        $stmt->execute(['id' => $id]);
+        $stmt->execute(['sku' => $skuToDelete]);
         return true;
     }
 }
