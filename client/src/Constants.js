@@ -1,0 +1,1 @@
+export const baseURL = "http://localhost/Scandiweb_test/Server/products";

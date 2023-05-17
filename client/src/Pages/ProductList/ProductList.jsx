@@ -1,12 +1,26 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
+import axios from "axios";
 import { Link } from 'react-router-dom'
 
-import products from '../../Constants/products'
+import { baseURL } from '../../Constants'
 import Product from '../../Components/Product/Product'
 import './productlist.css'
 
 const ProductList = () => {
     const [checkedProducts,setCheckedProducts] = useState([])
+    const [products, setProducts] = useState();
+
+    useEffect(() => {
+        const getProducts = async () => {
+            try {
+                const response = await axios.get(baseURL)
+                setProducts(response.data);
+            } catch (error) {
+                console.log(error)
+            }   
+        }
+        getProducts()
+    }, []);
 
     const handleCheckBox = (e) => {
         const { value, checked } = e.target;
@@ -20,6 +34,10 @@ const ProductList = () => {
     const handleMassDelete = () => {
         console.log(checkedProducts)
     }
+
+    if (!products) return null;
+
+    console.log(products)
 
   return (
     <div className='productlist-container'>

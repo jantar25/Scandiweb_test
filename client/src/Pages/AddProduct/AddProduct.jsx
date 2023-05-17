@@ -1,7 +1,9 @@
 import React,{ useState } from 'react'
+import axios from 'axios'
 import { Link,useNavigate } from 'react-router-dom'
 
 import ProductForm from '../../Components/ProductForm/ProductForm'
+import { baseURL } from '../../Constants'
 import './addproduct.css'
 
 const AddProduct = () => {
@@ -53,6 +55,20 @@ const AddProduct = () => {
 
   const common = { sku,name,price,productType }
 
+  const createProduct = async(product) => {
+    try {
+      await axios.post(baseURL, {...product})
+      emptyForm()
+      navigate('/') 
+    } catch (error) {
+      console.error(error)
+      setNotification(error.message)
+      setTimeout(() => {
+        setNotification(null)
+      }, 5000)
+    }
+  }
+
   const handleSubmit = () => {
     switch (productType) {
       case "dvd":
@@ -63,9 +79,7 @@ const AddProduct = () => {
             }, 5000)
           } else {
             const product = { ...common,size }
-            console.log(product)
-            emptyForm()
-            navigate('/')
+            createProduct(product)
           }
         break;
       case "book":
@@ -76,9 +90,7 @@ const AddProduct = () => {
           }, 5000)
         } else {
           const product = { ...common,weight }
-          console.log(product)
-          emptyForm()
-          navigate('/')
+          createProduct(product)
         }
         break;
         case "furniture":
@@ -89,9 +101,7 @@ const AddProduct = () => {
             }, 5000)
           } else {
             const product = { ...common,dimension:`${height}x${width}x${length}` }
-            console.log(product)
-            emptyForm()
-            navigate('/')
+            createProduct(product)
           }
           break;
       default:

@@ -14,11 +14,11 @@ const Product = ({product,handleCheckBox}) => {
             <span>{product.SKU}</span>
             <span>{product.name}</span>
             <span>{product.price} $</span>
-            {product.type === 'Furniture' ?
-            <span>Dimention: {product.dimention}</span> :
-            product.type === 'Book' ?
-            <span>Weight: {product.weight}</span>
-            : <span>Size: {product.size}</span>
+            {product.productType === 'furniture' ?
+            <span>Dimensions: {product.dimensions}</span> :
+            product.productType === 'book' ?
+            <span>Weight: {product.weight} KG</span>
+            : <span>Size: {product.size} MB</span>
         }
         </div>
     </div>
