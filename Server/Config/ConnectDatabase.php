@@ -9,7 +9,7 @@ class Connect_Database
     private const SERVERNAME = "localhost";
     private const USERNAME = "root";
     private const PASSWORD = "";
-    private const DB_NAME = "PetitPlatResto";
+    private const DB_NAME = "Scandiweb_test";
 
     // Data Source Network
     private $DSN = 'mysql:host=' . self::SERVERNAME . ';dbname=' . self::DB_NAME . '';

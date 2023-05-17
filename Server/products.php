@@ -1,10 +1,11 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-header('Access-Control-Allow-Headers: X-Requested-With');
+header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
 header('Content-Type: application/json');
 
-// Include action.php file
+
+
 include_once './db.php';
 
 // Create object of Products class
@@ -29,21 +30,24 @@ if ($api == 'GET') {
     echo json_encode($response);
 }
 
-// Add a new user into database
+// Add new product into database
 if ($api == 'POST') {
-    $names = $product->test_input($data->name);
-    $imageURL = $product->test_input($data->imageURL);
-    $descriptions = $product->test_input($data->description);
-    $amount = $product->test_input($data->price);
+    $sku = $product->test_input($data->sku);
+    $name = $product->test_input($data->name);
+    $productType = $product->test_input($data->productType);
+    $price = $product->test_input($data->price);
+    $size = $product->test_input($data->size);
+    $weight = $product->test_input($data->weight);
+    $dimensions = $product->test_input($data->dimensions);
 
-    if ($product->insert($names, $imageURL, $amount, $descriptions)) {
+    if ($product->insert($sku, $name, $productType, $price, $size, $weight, $dimensions)) {
         echo $product->message('Product added successfully!', false);
     } else {
         echo $product->message('Failed to add an Product!', true);
     }
 }
 
-// Update an user in database
+// Update products in database
 if ($api == 'PUT') {
     $names = $product->test_input($data->name);
     $imageURL = $product->test_input($data->imageURL);
@@ -61,7 +65,7 @@ if ($api == 'PUT') {
     }
 }
 
-// Delete an user from database
+// Delete products from database
 if ($api == 'DELETE') {
     if ($id != null) {
         if ($product->delete($id)) {

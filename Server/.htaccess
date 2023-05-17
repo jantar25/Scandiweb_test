@@ -1,5 +1,4 @@
 RewriteEngine On #Turn Rewrite Engine On
 
-RewriteRule ^index/?$ index.php [NC,L] #Remove .php extension form index.php
-
-RewriteRule ^index/([0-9]+)/?$ index.php?id=$1 [NC,L] #Rewrite URL
+RewriteRule ^products$ products.php [NC,L] #Remove .php extension form products.php
+RewriteRule ^products/([0-9_-]*)$ products.php?id=$1 [NC,L]

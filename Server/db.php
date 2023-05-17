@@ -23,11 +23,12 @@ class Database extends Connect_Database
     }
 
     // Insert an Product in the database
-    public function insert($name, $imageURL, $amount, $description)
+    public function insert($sku, $name, $productType, $price, $size, $weight, $dimensions)
     {
-        $sql = 'INSERT INTO Products (names, imageURL, descriptions,amount) VALUES (:name, :imageURL, :description, :amount)';
+        $sql = 'INSERT INTO Products (SKU, name,productType, price,size, weight,dimensions) 
+        VALUES (:sku, :name,:productType, :price, :size ,:weight,:dimensions)';
         $stmt = $this->CONN->prepare($sql);
-        $stmt->execute(['name' => $name, 'imageURL' => $imageURL, 'description' => $description, 'amount' => $amount]);
+        $stmt->execute(['sku' => $sku, 'name' => $name, 'productType' => $productType, 'price' => $price, 'size' => $size, 'weight' => $weight, 'dimensions' => $dimensions]);
         return true;
     }
 

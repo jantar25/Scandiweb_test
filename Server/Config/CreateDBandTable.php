@@ -1,7 +1,6 @@
 <?php
 
-
-class Database
+class CreateDBandTable
 {
     private $SERVERNAME = "localhost";
     private $USERNAME = "root";
@@ -35,7 +34,7 @@ class Database
         echo "Connection established successfully";
 
 
-        //sql query to create a database named petit-plat
+        //sql query to create a database
         $query = "CREATE DATABASE {$this->DB_NAME}";
         if ($CONN->query($query)) {
             echo "Database created successfully";
@@ -52,10 +51,13 @@ class Database
         $CONN = new mysqli($this->SERVERNAME, $this->USERNAME, $this->PASSWORD, $this->DB_NAME);
         $sqlTable = "CREATE TABLE {$this->TABLE_NAME} (
             id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            names VARCHAR(30) NOT NULL,
-            imageURL VARCHAR(300) NOT NULL,
-            descriptions VARCHAR(200) NOT NULL,
-            amount INT(10),
+            SKU VARCHAR(30) NOT NULL UNIQUE,
+            name VARCHAR(300) NOT NULL,
+            price  DECIMAL (10,2) NOT NULL,
+            productType VARCHAR(30) NOT NULL,
+            size INT(10),
+            weight INT(10),
+            dimensions VARCHAR(100),
             postdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
 
@@ -69,8 +71,8 @@ class Database
     }
 }
 
-$DB = new Database();
-$DB->setDBAndTableName("PetitPlatResto", "Products");
+$DB = new CreateDBandTable();
+$DB->setDBAndTableName("Scandiweb_test", "Products");
 echo $DB->getDBAndTableName();
 $DB->createDB();
 $DB->createTable();
