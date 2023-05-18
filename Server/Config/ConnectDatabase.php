@@ -12,25 +12,25 @@ class Connect_Database
     private const DB_NAME = "Scandiweb_test";
 
     // Data Source Network
-    private $DSN = 'mysql:host=' . self::SERVERNAME . ';dbname=' . self::DB_NAME . '';
+    private $dsn = 'mysql:host=' . self::SERVERNAME . ';dbname=' . self::DB_NAME . '';
 
     // conn variable
-    protected $CONN = null;
+    protected $conn = null;
 
     // Constructor Function
     public function __construct()
     {
         try {
-            $this->CONN = new PDO($this->DSN, self::USERNAME, self::PASSWORD);
-            $this->CONN->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $this->conn = new PDO($this->dsn, self::USERNAME, self::PASSWORD);
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die('Connectionn Failed : ' . $e->getMessage());
         }
-        return $this->CONN;
+        return $this->conn;
     }
 
     // Sanitize Inputs
-    public function test_input($data)
+    public function testInput($data)
     {
         $data = strip_tags($data);
         $data = htmlspecialchars($data);

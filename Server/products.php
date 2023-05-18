@@ -4,9 +4,7 @@ header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIO
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
 header('Content-Type: application/json');
 
-
-
-include_once './db.php';
+include_once './database.php';
 
 // Create object of Products class
 $product = new Database();
@@ -14,38 +12,32 @@ $product = new Database();
 // create a api variable to get HTTP method dynamically
 $api = $_SERVER['REQUEST_METHOD'];
 
-// get id from url
-$id = intval($_GET['id'] ?? '');
-
 // get body data from request
 $data = json_decode(file_get_contents("php://input"));
+
 // Get all or a single Product from database
 if ($api == 'GET') {
-    if ($id != 0) {
-        $response = $product->fetch($id);
-    } else {
-        $response = $product->fetch();
-    }
+    $response = $product->fetch();
     echo json_encode($response);
 }
 
 // Add new product into database
 if ($api == 'POST') {
-    $sku = $product->test_input($data->sku);
-    $name = $product->test_input($data->name);
-    $productType = $product->test_input($data->productType);
-    $price = $product->test_input($data->price);
-    $size = $product->test_input($data->size);
-    $weight = $product->test_input($data->weight);
-    $dimensions = $product->test_input($data->dimensions);
+    $sku = $product->testInput($data->sku);
+    $name = $product->testInput($data->name);
+    $productType = $product->testInput($data->productType);
+    $price = $product->testInput($data->price);
+    $size = $product->testInput($data->size);
+    $weight = $product->testInput($data->weight);
+    $dimensions = $product->testInput($data->dimensions);
 
-    if ($product->insert($sku, $name, $productType, $price, $size, $weight, $dimensions)) {
+    $response = $product->insert($sku, $name, $productType, $price, $size, $weight, $dimensions);
+    if ($response) {
         echo $product->message('Product added successfully!', false);
     } else {
-        echo $product->message('Failed to add an Product!', true);
+        echo $product->message('Failed,Product with same SKU already exist!', true);
     }
 }
-
 
 // Mass delete products from database
 if ($api == 'PATCH') {

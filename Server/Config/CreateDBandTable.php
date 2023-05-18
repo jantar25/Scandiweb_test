@@ -2,20 +2,19 @@
 
 class CreateDBandTable
 {
-    private $SERVERNAME = "localhost";
-    private $USERNAME = "root";
-    private $PASSWORD = "";
+    private const SERVERNAME = "localhost";
+    private const USERNAME = "root";
+    private const PASSWORD = "";
     private $DB_NAME;
     private $TABLE_NAME;
 
-    // getters
+    // getter
     public function getDBAndTableName()
     {
         return "$this->DB_NAME $this->TABLE_NAME";
     }
 
-    // setters
-
+    // setter
     public function setDBAndTableName($dbName, $tableName)
     {
         $this->DB_NAME = $dbName;
@@ -25,30 +24,30 @@ class CreateDBandTable
     public function createDB()
     {
         // Create connection
-        $CONN = new mysqli($this->SERVERNAME, $this->USERNAME, $this->PASSWORD);
+        $conn = new mysqli(self::SERVERNAME, self::USERNAME, self::PASSWORD);
 
         // Check connection
-        if ($CONN->connect_error) {
-            die("Connection failed: " . $CONN->connect_error);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
         }
         echo "Connection established successfully";
 
 
         //sql query to create a database
         $query = "CREATE DATABASE {$this->DB_NAME}";
-        if ($CONN->query($query)) {
+        if ($conn->query($query)) {
             echo "Database created successfully";
         } else {
-            echo "Error creating database: " . $CONN->error;
+            echo "Error creating database: " . $conn->error;
         }
-        $CONN->close();
+        $conn->close();
     }
 
 
     // sql to create table
     public function createTable()
     {
-        $CONN = new mysqli($this->SERVERNAME, $this->USERNAME, $this->PASSWORD, $this->DB_NAME);
+        $conn = new mysqli(self::SERVERNAME, self::USERNAME, self::PASSWORD, $this->DB_NAME);
         $sqlTable = "CREATE TABLE {$this->TABLE_NAME} (
             id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             SKU VARCHAR(30) NOT NULL UNIQUE,
@@ -61,18 +60,12 @@ class CreateDBandTable
             postdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
 
-        if ($CONN->query($sqlTable)) {
+        if ($conn->query($sqlTable)) {
             echo "Table created successfully";
         } else {
-            echo "Error creating table: " . $CONN->error;
+            echo "Error creating table: " . $conn->error;
         }
 
-        $CONN->close();
+        $conn->close();
     }
 }
-
-$DB = new CreateDBandTable();
-$DB->setDBAndTableName("Scandiweb_test", "Products");
-echo $DB->getDBAndTableName();
-$DB->createDB();
-$DB->createTable();
