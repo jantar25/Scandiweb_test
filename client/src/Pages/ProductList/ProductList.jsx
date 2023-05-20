@@ -42,9 +42,8 @@ const ProductList = () => {
         }
     }
 
-    if (!products) return null
 
-    const sortedProduct = products.sort((a,b)=> b.id-a.id)
+    const sortedProduct = products?.sort((a,b)=> b.id-a.id)
 
   return (
     <div className='productlist-container'>
@@ -63,7 +62,7 @@ const ProductList = () => {
         </div>
         <hr />
         <div className='body'>
-            {sortedProduct.map(product =>
+            {sortedProduct?.map(product =>
             <Product
                 key={product.id} 
                 product={product} 
