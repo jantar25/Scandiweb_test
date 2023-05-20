@@ -11,7 +11,6 @@ const ProductList = () => {
     const products = useProductsContext()
     const setProducts = useSetProductsContext()
     const [checkedProducts,setCheckedProducts] = useState([])
-    // const [products, setProducts] = useState();
 
     useEffect(() => {
         const getProducts = async () => {
