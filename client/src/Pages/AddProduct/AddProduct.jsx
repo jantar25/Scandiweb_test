@@ -118,7 +118,7 @@ const AddProduct = () => {
         <div className='header'>
             <h1>Product Add</h1>
             <div className='button-container'>
-                <button className='Save' onClick={handleSubmit}>Save</button>
+                <button className='save' onClick={handleSubmit}>Save</button>
                 <Link to='/' style={{textDecoration:'none'}}>
                   <button className='cancel'>Cancel</button>
                 </Link>

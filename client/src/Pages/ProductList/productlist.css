@@ -38,7 +38,7 @@
     background: #b42823;
 }
 
-.productlist-container .body {
+.productlist-container .container {
     min-height: 75vh;
     padding: .5rem 0;
     display: grid;
@@ -55,19 +55,19 @@
     .header .button-container {
         margin: 0;
     }
-    .productlist-container .body {
+    .productlist-container .container {
         grid-template-columns: repeat(2, 1fr);
     }  
 }
 
 @media only screen and (min-width: 768px) {
-    .productlist-container .body {
+    .productlist-container .container {
         grid-template-columns: repeat(3, 1fr);
     } 
 }
 
 @media only screen and (min-width: 1024px) {
-    .productlist-container .body {
+    .productlist-container .container {
         grid-template-columns: repeat(4, 1fr);
     } 
 }

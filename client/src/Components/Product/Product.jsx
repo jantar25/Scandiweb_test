@@ -11,14 +11,14 @@ const Product = ({product,handleCheckBox}) => {
           value={product.SKU} 
           onChange={handleCheckBox}/>
         <div className='product-card'>
-            <p>{product.SKU}</p>
-            <p>{product.name}</p>
-            <p>{product.price} $</p>
+            <div>{product.SKU}</div>
+            <div>{product.name}</div>
+            <div>{product.price} $</div>
             {product.productType === 'furniture' ?
-            <p>Dimensions: {product.dimensions}</p> :
+            <div>Dimensions: {product.dimensions}</div> :
             product.productType === 'book' ?
-            <p>Weight: {product.weight} KGs</p>
-            : <p>Size: {product.size} MB</p>
+            <div>Weight: {product.weight} KGs</div>
+            : <div>Size: {product.size} MBs</div>
         }
         </div>
     </div>

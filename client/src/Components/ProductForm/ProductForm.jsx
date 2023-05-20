@@ -5,7 +5,7 @@ import './productform.css'
 const ProductForm = ({notification,handleNumberChange,handleTextChange,inputs}) => {
     const { sku,name,price,productType,size,weight,height,width,length } = inputs;
   return (
-    <div className='body'>
+    <div className='container'>
     <form id='product_form'>
       {notification && <div className='notification'>{notification}</div>}
       <div className='input-container'>

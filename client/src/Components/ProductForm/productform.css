@@ -1,8 +1,8 @@
-.body {
+.container {
     min-height: 75vh;
 }
 
-.body form {
+.container form {
     padding: 2rem 0;
     width: 100%;
 }
@@ -37,7 +37,7 @@ form p {
 
 
 @media only screen and (min-width: 640px) {
-    .body form {
+    .container form {
         width: 80%;
     }
     .input-container {
@@ -47,13 +47,13 @@ form p {
 }
 
 @media only screen and (min-width: 768px) {
-    .body form {
+    .container form {
         width: 60%;
     }
 }
 
 @media only screen and (min-width: 1024px) {
-    .body form {
+    .container form {
         width: 40%;
     }
 }
