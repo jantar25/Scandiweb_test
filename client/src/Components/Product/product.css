@@ -16,3 +16,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.product-card p{
+    margin: 0;
+}
