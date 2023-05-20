@@ -7,14 +7,13 @@ const Product = ({product,handleCheckBox}) => {
     <div className='product-container'>
         <input 
           type='checkbox' 
-          className='delete-checkbox' 
-          name='delete-checkbox'
+          className='.delete-checkbox' 
           value={product.SKU} 
           onChange={handleCheckBox}/>
         <div className='product-card'>
             <p>{product.SKU}</p>
             <p>{product.name}</p>
-            <span>{product.price} $</span>
+            <p>{product.price} $</p>
             {product.productType === 'furniture' ?
             <p>Dimensions: {product.dimensions}</p> :
             product.productType === 'book' ?

@@ -2,13 +2,16 @@ import React,{ useState,useEffect } from 'react'
 import axios from "axios";
 import { Link } from 'react-router-dom'
 
+import { useProductsContext,useSetProductsContext } from '../../Context/Context';
 import { baseURL } from '../../Constants'
 import Product from '../../Components/Product/Product'
 import './productlist.css'
 
 const ProductList = () => {
+    const products = useProductsContext()
+    const setProducts = useSetProductsContext()
     const [checkedProducts,setCheckedProducts] = useState([])
-    const [products, setProducts] = useState();
+    // const [products, setProducts] = useState();
 
     useEffect(() => {
         const getProducts = async () => {
@@ -20,7 +23,7 @@ const ProductList = () => {
             }   
         }
         getProducts()
-    }, []);
+    }, [setProducts]);
 
     const handleCheckBox = (e) => {
         const { value, checked } = e.target;
