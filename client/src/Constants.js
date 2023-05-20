@@ -1,4 +1,4 @@
-export const baseURL = "http://scandiwebtesting.x10.mx/products"
+export const baseURL = "https://scandiwebtesting.x10.mx/products"
 
 // "https://scandiserver.000webhostapp.com/products";
 
