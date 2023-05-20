@@ -2,10 +2,6 @@
 
 class Connect_Database
 {
-    // private const SERVERNAME = "sql306.epizy.com";
-    // private const USERNAME = "id20773296_root";
-    // private const PASSWORD = "Domain@123";
-    // private const DB_NAME = "id20773296_scandiweb_test";
     private const SERVERNAME = "localhost";
     private const USERNAME = "root";
     private const PASSWORD = "";

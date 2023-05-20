@@ -18,23 +18,14 @@ class Database extends Connect_Database
     // Insert an Product in the database
     public function insert($sku, $name, $productType, $price, $size, $weight, $dimensions)
     {
-        $check = 'SELECT * FROM Products WHERE SKU = :sku';
-        $stmt = $this->conn->prepare($check);
-        $stmt->execute(['sku' => $sku]);
-        $row = $stmt->fetchAll();
-
-        if ($row[0] == null) {
-            $sql = 'INSERT INTO Products (SKU, name,productType, price,size, weight,dimensions) 
+        $sql = 'INSERT INTO Products (SKU, name,productType, price,size, weight,dimensions) 
             VALUES (:sku, :name,:productType, :price, :size ,:weight,:dimensions)';
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute([
-                'sku' => $sku, 'name' => $name, 'productType' => $productType,
-                'price' => $price, 'size' => $size, 'weight' => $weight, 'dimensions' => $dimensions
-            ]);
-            return true;
-        } else {
-            return false;
-        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'sku' => $sku, 'name' => $name, 'productType' => $productType,
+            'price' => $price, 'size' => $size, 'weight' => $weight, 'dimensions' => $dimensions
+        ]);
+        return true;
     }
 
     // Delete an Product from database

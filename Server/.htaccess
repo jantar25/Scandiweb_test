@@ -1,4 +1,4 @@
 RewriteEngine On #Turn Rewrite Engine On
 
 RewriteRule ^products$ products.php [NC,L] #Remove .php extension form products.php
-RewriteRule ^products/([0-9_-]*)$ products.php?id=$1 [NC,L]
+
