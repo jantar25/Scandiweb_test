@@ -46,7 +46,7 @@ if ($api == 'POST') {
     if ($response) {
         echo $product->message('Product added successfully!', false);
     } else {
-        echo $product->message('Failed,Product with same SKU already exist!', true);
+        echo $product->message('Failed,to add product!', true);
     }
 }
 
