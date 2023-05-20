@@ -50,13 +50,13 @@ const ProductList = () => {
             <h1>Product List</h1>
             <div className='button-container'>
                 <Link to='/addproduct' style={{textDecoration:'none'}}>
-                    <button type="button" className='add'>ADD</button>
+                    <button type="button" className='add'> ADD </button>
                 </Link>
                 <button
                     type="button"
                     className='mass-delete'
                     onClick={handleMassDelete}
-                >MASS DELETE</button>
+                > MASS DELETE </button>
             </div>
         </div>
         <hr />
