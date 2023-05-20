@@ -64,7 +64,7 @@ const ProductList = () => {
         </div>
         <hr />
         <div className='body'>
-            {sortedProduct?.map(product =>
+            {sortedProduct && sortedProduct.map(product =>
             <Product
                 key={product.id} 
                 product={product} 

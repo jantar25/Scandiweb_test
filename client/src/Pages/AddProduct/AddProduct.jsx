@@ -3,14 +3,11 @@ import axios from 'axios'
 import { Link,useNavigate } from 'react-router-dom'
 
 import ProductForm from '../../Components/ProductForm/ProductForm'
-import { useProductsContext,useSetProductsContext } from '../../Context/Context';
 import { baseURL } from '../../Constants'
 import './addproduct.css'
 
 const AddProduct = () => {
   const navigate = useNavigate()
-  const products = useProductsContext()
-  const setProducts = useSetProductsContext()
   const [notification,setNotification] = useState(null)
   const [inputs,setInputs] = useState({
     sku: '',
@@ -61,7 +58,6 @@ const AddProduct = () => {
   const createProduct = async(product) => {
     try {
       await axios.post(baseURL, {...product})
-      setProducts(products.concat(product))
       emptyForm()
       navigate('/') 
     } catch (error) {
@@ -122,7 +118,7 @@ const AddProduct = () => {
         <div className='header'>
             <h1>Product Add</h1>
             <div className='button-container'>
-                <button className='save' onClick={handleSubmit}>Save</button>
+                <button className='Save' onClick={handleSubmit}>Save</button>
                 <Link to='/' style={{textDecoration:'none'}}>
                   <button className='cancel'>Cancel</button>
                 </Link>
