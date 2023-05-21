@@ -12,17 +12,17 @@ const ProductList = () => {
     const setProducts = useSetProductsContext()
     const [checkedProducts,setCheckedProducts] = useState([])
 
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const response = await axios.get(baseURL)
-                setProducts(response.data);
-            } catch (error) {
-                console.log(error)
-            }   
-        }
-        getProducts()
-    }, [setProducts]);
+    // useEffect(() => {
+    //     const getProducts = async () => {
+    //         try {
+    //             const response = await axios.get(baseURL)
+    //             setProducts(response.data);
+    //         } catch (error) {
+    //             console.log(error)
+    //         }   
+    //     }
+    //     getProducts()
+    // }, [setProducts]);
 
     const handleCheckBox = (e) => {
         const { value, checked } = e.target;

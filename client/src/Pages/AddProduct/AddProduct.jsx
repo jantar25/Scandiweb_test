@@ -2,11 +2,14 @@ import React,{ useState } from 'react'
 import axios from 'axios'
 import { Link,useNavigate } from 'react-router-dom'
 
+import { useProductsContext,useSetProductsContext } from '../../Context/Context';
 import ProductForm from '../../Components/ProductForm/ProductForm'
 import { baseURL } from '../../Constants'
 import './addproduct.css'
 
 const AddProduct = () => {
+  const products = useProductsContext()
+  const setProducts = useSetProductsContext()
   const navigate = useNavigate()
   const [notification,setNotification] = useState(null)
   const [inputs,setInputs] = useState({
@@ -58,6 +61,7 @@ const AddProduct = () => {
   const createProduct = async(product) => {
     try {
       await axios.post(baseURL, {...product})
+      setProducts(products.concat({...product,id: products.length +3,SKU:sku}))
       emptyForm()
       navigate('/') 
     } catch (error) {
