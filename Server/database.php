@@ -8,7 +8,7 @@ class Database extends Connect_Database
     // Fetch all or a single Product from database
     public function fetch()
     {
-        $sql = 'SELECT * FROM products';
+        $sql = 'SELECT * FROM productstable';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $rows = $stmt->fetchAll();
@@ -16,9 +16,9 @@ class Database extends Connect_Database
     }
 
     // Insert an Product in the database
-    public function insert($sku, $name, $productType, $price, $size, $weight, $dimensions)
+    public function insert($sku, $name, $productType, $price, $size = null, $weight = null, $dimensions = null)
     {
-        $sql = 'INSERT INTO products (SKU, name,productType, price,size, weight,dimensions) VALUES (:sku, :name,:productType, :price, :size ,:weight,:dimensions)';
+        $sql = "INSERT INTO productstable (SKU, name,productType, price,size, weight,dimensions) VALUES (:sku, :name,:productType, :price, :size ,:weight,:dimensions)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['sku' => $sku, 'name' => $name, 'productType' => $productType, 'price' => $price, 'size' => $size, 'weight' => $weight, 'dimensions' => $dimensions]);
         return true;
@@ -27,7 +27,7 @@ class Database extends Connect_Database
     // Delete an Product from database
     public function delete($skuToDelete)
     {
-        $sql = 'DELETE FROM products WHERE SKU = :sku';
+        $sql = 'DELETE FROM productstable WHERE SKU = :sku';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['sku' => $skuToDelete]);
         return true;
