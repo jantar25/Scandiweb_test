@@ -2,10 +2,6 @@
 
 class Connect_Database
 {
-    // private const SERVERNAME = "localhost";
-    // private const USERNAME = "mmvkvrqb_root";
-    // private const PASSWORD = "Domain@123";
-    // private const DB_NAME = "mmvkvrqb_database";
     private const SERVERNAME = "localhost";
     private const USERNAME = "root";
     private const PASSWORD = "";
