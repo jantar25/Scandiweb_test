@@ -2,14 +2,14 @@
 
 class Connect_Database
 {
-    private const SERVERNAME = "localhost";
-    private const USERNAME = "mmvkvrqb_root";
-    private const PASSWORD = "Domain@123";
-    private const DB_NAME = "mmvkvrqb_database";
     // private const SERVERNAME = "localhost";
-    // private const USERNAME = "root";
-    // private const PASSWORD = "";
-    // private const DB_NAME = "Scandiweb_test";
+    // private const USERNAME = "mmvkvrqb_root";
+    // private const PASSWORD = "Domain@123";
+    // private const DB_NAME = "mmvkvrqb_database";
+    private const SERVERNAME = "localhost";
+    private const USERNAME = "root";
+    private const PASSWORD = "";
+    private const DB_NAME = "Scandiweb_test";
 
     // Data Source Network
     private $dsn = 'mysql:host=' . self::SERVERNAME . ';dbname=' . self::DB_NAME . '';

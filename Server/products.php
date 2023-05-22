@@ -34,13 +34,14 @@ if ($api == 'GET') {
 
 // Add new product into database
 if ($api == 'POST') {
+    //cleanning data
     $sku = $product->testInput($data->sku);
     $name = $product->testInput($data->name);
     $productType = $product->testInput($data->productType);
     $price = $product->testInput($data->price);
-    $size = $product->testInput($data->size);
-    $weight = $product->testInput($data->weight);
-    $dimensions = $product->testInput($data->dimensions);
+    $size = $product->testInput(!empty($data->size) ? $data->size : 0);
+    $weight = $product->testInput(!empty($data->weight) ? $data->weight : 0);
+    $dimensions = $product->testInput(!empty($data->dimensions) ? $data->dimensions : '');
 
     $response = $product->insert($sku, $name, $productType, $price, $size, $weight, $dimensions);
     if ($response) {
